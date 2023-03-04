@@ -51,7 +51,6 @@ def stream_mp3_audio(audio, output):
     chunk_iterator = ChunkIterator(audio, 1)
     while chunk_iterator.has_next_chunk():
         chunk = chunk_iterator.next_chunk()
-
         data = pack('l', len(chunk)) + chunk
         output.send(bytes(data))
     print('Finished Streaming.')
