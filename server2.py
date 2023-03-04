@@ -8,7 +8,6 @@ import glob
 import sys
 import os
 from struct import pack
-print("Hey")
 
 CHUNK_SIZE = 1024
 SERVER = ('0.0.0.0', 9010)
