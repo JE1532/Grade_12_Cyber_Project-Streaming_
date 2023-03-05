@@ -10,10 +10,11 @@ class Streamer:
         self.receiver_thread = threading.Thread(target=StreamerReceiver, args=(audio_path, tempfile_path, chunk_time, self.send_queue))
         self.sender_thread = threading.Thread(target=StreamerSender, args=(client_socket, self.send_queue))
         self.socket_let_go = socket_let_go
+        self.client_socket = client_socket
         self.start()
 
 
     def start(self):
         self.receiver_thread.start()
         self.sender_thread.start()
-        self.socket_let_go()
+        self.socket_let_go(self.client_socket)
